@@ -1,32 +1,22 @@
-import axios from 'axios';
+/**
+ * Controlador Farmacias
+ * Date: 16-01-2020
+ * Author: Mirko Gonzalez Vasquez
+ * Version: v1.0.0
+ */
 
+const { Farmacia, listarFarmacias } = require('./farmarcias.dao')
 
 exports.obtenerComunas = (req, res) => {
-    let {
-        id_region
-    } = req.params;
-    
-    var bodyFormData = new FormData();
-    
-    bodyFormData.set('reg_id', id_region);
-
-    axios({
-        method:'post',
-        url:'',
-        data: bodyFormData,
-        headers:{'Content-Type': 'multipart/form-data'}
-    }).then((data) => console.log(data))
-    .catch((_err)=> res.status(500).send({
-        message: _err.message
-    }));
-}
+    Farmacia.obtenerComunas()
+    .then(_result => res.status(200).send(_result))
+    .catch(_err => res.status(500).send({ message: _err.stack }));
+    };
 
 exports.obtenerFarmacias = (req, res) => {
+    const {comuna, nombre_de_local} = req.body
 
+    listarFarmacias(comuna, nombre_de_local)
+    .then(_result => res.status(200).send(_result))
+    .catch((_err) => res.status(500).send({ message: _err.stack}))
 }
-
-catchError = (_err) => {
-    return res.status(500).send({
-        message: _err.message
-    });
-};

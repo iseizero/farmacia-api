@@ -1,11 +1,15 @@
-const { app } = require('./server');
-const { url } = require('./config/config');
+const {
+    app
+} = require("./server")
 
-async function run(){
+const port = process.env.PORT || 8080;
 
-    app.listen(4020, function(){
-        console.log('Server Start');
+async function run() {
+
+    const server = app.listen(port, function () {
+        console.log("Server Start");
     });
+    server.setTimeout(1800000)
 }
 
 run();

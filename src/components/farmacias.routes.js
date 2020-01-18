@@ -1,11 +1,12 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
 
-const farmacias_controller = require('./farmacias.controller');
+const router = express.Router()
 
-const context = "farmacias";
+const farmacias_controller = require('./farmacias.controller')
 
-router.post(`/${context}/obtenerComunas`, farmacias_controller.obtenerComunas);
+const context = 'farmacias'
 
-module.exports = router;
+router.get(`/${context}/obtenerComunas/`, farmacias_controller.obtenerComunas)
+router.post(`/${context}/obtenerFarmacias/`, farmacias_controller.obtenerFarmacias)
 
+module.exports = router
