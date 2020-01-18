@@ -5,11 +5,11 @@
  * Version: v1.0.0
  */
 
-const { Farmacia, listarFarmacias } = require('./farmarcias.dao')
+const { Farmacia, listarFarmacias } = require('./farmacias.dao')
 
 exports.obtenerComunas = (req, res) => {
     Farmacia.obtenerComunas()
-    .then(_result => res.status(200).send(_result))
+    .then(_result => res.status(200).send(_result.comunas))
     .catch(_err => res.status(500).send({ message: _err.stack }));
     };
 
