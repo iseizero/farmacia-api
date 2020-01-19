@@ -7,7 +7,7 @@ const port = process.env.PORT || 8080;
 async function run() {
 
     const server = app.listen(port, function () {
-        console.log("Server Start");
+        console.log("Server Start", port);
     });
     server.setTimeout(1800000)
 }
