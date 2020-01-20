@@ -27,6 +27,7 @@ class Farmacia {
         const json = convert(data,{
             comunas: text('option')
         })
+        json.comunas.shift()
         return json
     }
 
